@@ -51,7 +51,7 @@ if uploaded_file is not None:
 
     try:
     df['توقع_مستوى_الأولوية'] = model.predict(X)
-except Exception as e:
+   except Exception as e:
     st.error(f"🚫 حدث خطأ أثناء التنبؤ: {e}")
     st.stop()
 
