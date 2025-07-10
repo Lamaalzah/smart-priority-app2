@@ -50,9 +50,13 @@ if uploaded_file is not None:
     X = df[features]
 
     
+    try:
     df['توقع_مستوى_الأولوية'] = model.predict(X)
-   
+   except Exception as e:
+    st.error(f" حدث خطأ أثناء التنبؤ: {e}")
+    st.stop()
 
+   
 
     st.markdown("### نتائج التوقع:")
     st.dataframe(df[['نوع الخدمة', 'موقع البلاغ', 'عدد السكان', 'عدد البلاغات', 'توقع_مستوى_الأولوية']])
